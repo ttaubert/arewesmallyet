@@ -43,6 +43,7 @@ GEM
     padrino-mailer (0.10.6)
       mail (~> 2.3.0)
       padrino-core (= 0.10.6)
+    pg (0.13.2)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-protection (1.2.0)
@@ -73,6 +74,7 @@ PLATFORMS
 DEPENDENCIES
   haml
   padrino (= 0.10.6)
+  pg
   rake
   sequel
   sqlite3
