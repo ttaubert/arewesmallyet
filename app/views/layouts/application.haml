@@ -1,0 +1,26 @@
+-# coding: UTF-8
+
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+    %title= "ARE WE small YET?"
+
+    = javascript_include_tag "jquery.min.js"
+    = javascript_include_tag "jquery.flot.min.js"
+    = javascript_include_tag "jquery.flot.resize.min.js"
+    = javascript_include_tag "jquery.flot.selection.min.js"
+    = javascript_include_tag :data
+    = javascript_include_tag :plugins
+    = javascript_include_tag :application
+    = stylesheet_link_tag :application
+
+  %body
+    %h1= "ARE WE <span class='small'>small</span> YET?"
+
+    #graph-container
+      #graph
+
+    #footer
+      = link_to "Sources on GitHub.", "https://github.com/ttaubert/are-we-small-yet"
+      = link_to "javascripts/data.json", "Download data."
