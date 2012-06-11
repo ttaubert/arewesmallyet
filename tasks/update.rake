@@ -60,7 +60,11 @@ task :update do
   while true
     sleep 60
     puts "[Updater] starting..."
-    Updater.new.run
+    begin
+      Updater.new.run
+    rescue
+      puts "[Updater] ERROR: #{$!}"
+    end
     puts "[Updater] finished! Sleeping..."
   end
 end
