@@ -12,6 +12,7 @@ class Arewesmallyet < Padrino::Application
   set :haml, :format => :html5
 
   get :index do
+    @records = Record.order(:day.asc)
     render :index
   end
 

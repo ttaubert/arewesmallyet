@@ -6,6 +6,7 @@ cat public/javascripts/jquery.min.js \
     public/javascripts/jquery.flot.selection.min.js \
     public/javascripts/plugins.js \
     public/javascripts/main.js \
+    public/javascripts/data.js \
     > public/javascripts/application.tmp.js
 
 java -jar ~/Downloads/yuicompressor-2.4.7.jar \

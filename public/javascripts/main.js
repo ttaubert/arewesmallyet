@@ -1,4 +1,4 @@
-(function () {
+$(document).ready(function () {
   var Systems = ["linux", "linux64", "win", "win64", "mac"];
   var Graph = {description: "build size", direction: -1};
 
@@ -157,7 +157,5 @@
     });
   }
 
-  $(document).ready(function () {
-    drawGraph($("#graph"), Graph);
-  });
-})();
+  drawGraph($("#graph"), Graph);
+});

@@ -10,6 +10,10 @@
     = javascript_include_tag :application
     = stylesheet_link_tag :application
 
+    %script
+      - @records.each do |rec|
+        = "data['#{rec.day}'] = #{rec.data};"
+
   %body
     %h1= "ARE WE <span class='small'>small</span> YET?"
 
@@ -18,4 +22,3 @@
 
     #footer
       = link_to "Sources on GitHub.", "https://github.com/ttaubert/are-we-small-yet"
-      = link_to "Download data.", "javascripts/data.js"

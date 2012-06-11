@@ -7,6 +7,9 @@ require 'rubygems' unless defined?(Gem)
 require 'bundler/setup'
 Bundler.require(:default, PADRINO_ENV)
 
+# see https://github.com/padrino/padrino-framework/pull/859
+require 'active_support/time_with_zone'
+
 ##
 # Enable devel logging
 #
