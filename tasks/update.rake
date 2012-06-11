@@ -17,6 +17,7 @@ class Updater
     date = Date.today
 
     Net::FTP.open("ftp.mozilla.org") do |ftp|
+      ftp.passive = true
       ftp.login
 
       5.times do
@@ -54,6 +55,10 @@ class Updater
     rec.data = sizes.to_json
     rec.save rescue false
   end
+end
+
+task :update_once do
+  Updater.new.run
 end
 
 task :update do
