@@ -5,7 +5,7 @@ class Arewesmallyet < Padrino::Application
   register Padrino::Mailer
   register Padrino::Helpers
 
-  use Rack::DomainRedirect, ["arewesmallyet.com", "electric-winter-3960.herokuapp.com", "localhost"]
+  use Rack::DomainRedirect, ["www.arewesmallyet.com", "electric-winter-3960.herokuapp.com", "localhost"]
 
   disable :sessions
   disable :flash
