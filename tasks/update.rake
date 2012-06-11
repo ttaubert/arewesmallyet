@@ -63,7 +63,7 @@ end
 
 task :update do
   while true
-    sleep 60
+    sleep 3600 * 6 # 6 hours
     puts "[Updater] starting..."
     begin
       Updater.new.run
