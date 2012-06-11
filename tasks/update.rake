@@ -58,7 +58,7 @@ end
 
 task :update do
   while true
-    sleep 10
+    sleep 30
     puts "[Updater] starting..."
     Updater.new.run
     puts "[Updater] finished! Sleeping..."
