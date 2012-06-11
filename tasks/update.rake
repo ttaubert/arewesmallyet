@@ -63,12 +63,12 @@ def run_updater
 
   begin
     Updater.new.run
+    update = Update.new(finished: DateTime.now)
+    update.save rescue false
   rescue
     puts "[Updater] ERROR: #{$!}"
   end
 
-  update = Update.new(finished: DateTime.now)
-  update.save rescue false
   puts "[Updater] finished!"
 end
 
