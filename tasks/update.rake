@@ -1,6 +1,7 @@
 require 'date'
 require 'json'
 require 'net/ftp'
+require 'active_support/all'
 
 class Updater
   @@root = "/pub/mozilla.org/firefox/nightly"
@@ -57,19 +58,28 @@ class Updater
   end
 end
 
+def run_updater
+  puts "[Updater] starting..."
+
+  begin
+    Updater.new.run
+  rescue
+    puts "[Updater] ERROR: #{$!}"
+  end
+
+  update = Update.new(finished: DateTime.now)
+  update.save rescue false
+  puts "[Updater] finished!"
+end
+
 task :update_once do
-  Updater.new.run
+  run_updater
 end
 
 task :update do
   while true
-    sleep 3600 * 6 # 6 hours
-    puts "[Updater] starting..."
-    begin
-      Updater.new.run
-    rescue
-      puts "[Updater] ERROR: #{$!}"
-    end
-    puts "[Updater] finished! Sleeping..."
+    update = Update.first("? >= ?", :finished, 6.hours.ago)
+    run_updater unless update
+    sleep 1800 # 30 minutes
   end
 end
