@@ -4,14 +4,17 @@ class Arewesmallyet < Padrino::Application
   register Padrino::Rendering
   register Padrino::Mailer
   register Padrino::Helpers
+  register Padrino::Cache
 
   use Rack::DomainRedirect, ["www.arewesmallyet.com", "electric-winter-3960.herokuapp.com", "localhost"]
 
+  enable :caching
   disable :sessions
   disable :flash
   set :haml, :format => :html5
 
-  get :index do
+  get :index, :cache => true do
+    expires_in 3600 * 6
     @records = Record.order(:day.asc)
     render :index
   end
@@ -34,6 +37,10 @@ class Arewesmallyet < Padrino::Application
   #   set :cache, Padrino::Cache::Store::Memory.new(50)
   #   set :cache, Padrino::Cache::Store::File.new(Padrino.root('tmp', app_name.to_s, 'cache')) # default choice
   #
+
+  configure :production do
+    set :cache, Padrino::Cache::Store::Memcache.new(::Dalli::Client.new(:exception_retry_limit => 1))
+  end
 
   ##
   # Application configuration options

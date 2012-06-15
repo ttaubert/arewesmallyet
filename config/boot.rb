@@ -21,6 +21,8 @@ require 'active_support/time_with_zone'
 # Add your before load hooks here
 #
 Padrino.before_load do
+  Encoding.default_internal = nil
+  Encoding.default_external = 'UTF-8'
 end
 
 ##
